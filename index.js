@@ -1,20 +1,29 @@
+// server.js
 const express = require('express');
 const cors = require('cors');
-const app = express();
 
-app.use(cors({
-  origin: '*' // para pruebas, luego puedes restringir a tu dominio
-}));
+const app = express();
 app.use(express.json());
 
-app.get('/action', (req, res) => {
-  res.json({ ok: true, method: 'GET', mensaje: 'Hola desde GET en backend 🚀' });
+// Configura CORS para permitir el frontend.
+// Para producción, reemplaza '*' por la URL específica del frontend en Render.
+app.use(cors({
+  origin: '*' // O: 'https://TU-FRONTEND.onrender.com'
+}));
+
+let counter = 0;
+
+app.post('/api/accion', (req, res) => {
+  const name = (req.body && req.body.name) || 'invitado';
+  counter++;
+  res.json({
+    message: `Hola ${name}, acción recibida correctamente.`,
+    count: counter,
+    timestamp: new Date().toISOString()
+  });
 });
 
-app.post('/action', (req, res) => {
-  const user = req.body.user || 'invitado';
-  res.json({ ok: true, method: 'POST', mensaje: `Hola ${user} desde POST 👋` });
+const port = process.env.PORT || 10000;
+app.listen(port, () => {
+  console.log(`Backend escuchando en puerto ${port}`);
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Backend escuchando en puerto ${PORT}`));
