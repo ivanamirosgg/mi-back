@@ -4,9 +4,8 @@
   "description": "Backend simple para reto de reingeniería (Express + Render)",
   "main": "server.js",
   "scripts": {
-  "start": "node index.js"
-},
-
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivanamirosgg/mi-back.git"
@@ -18,6 +17,9 @@
     "url": "https://github.com/ivanamirosgg/mi-back/issues"
   },
   "homepage": "https://github.com/ivanamirosgg/mi-back#readme",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0"
