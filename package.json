@@ -4,8 +4,9 @@
   "description": "Backend simple para reto de reingeniería (Express + Render)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
-  },
+  "start": "node index.js"
+},
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivanamirosgg/mi-back.git"
